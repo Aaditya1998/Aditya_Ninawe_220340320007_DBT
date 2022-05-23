@@ -1,0 +1,75 @@
+1.Ans:
+create database test;
+create table Dept (
+DEPTNO	int(2),
+DNAME	varchar(15),
+LOC		varchar(10)
+);
+insert into Dept values 
+('10','ACCOUNTING','NEW YORK'),
+('20','RESEARCH','DALLAS'),
+('30','SALES','CHICAGO'),
+('40','OPERATIONS','BOSTON');
+
+2.Ans:
+use test;
+create table Emp(
+EMPNO int(4),
+ENAME varchar(10),
+JOB varchar(9),
+HIREDATE date,
+SAL float(7,2),
+COMM float(7,2),
+DEPTNO int(2)
+);
+use test;
+insert into emp values
+('7839',	'KING' ,  'MANAGER',  '1991-11-17',	'5000',	NULL,'10'),
+('7698'	,'BLAKE'	, 'CLERK',	'1981-05-01',	'2850',	NULL,'30'),
+('7782'	,'CLARK'	 ,'MANAGER',  '1981-06-09',	'2450',	NULL,'10'),
+('7566'	,'JONES'	 ,'CLERK','1981-04-02',	'2975',	  NULL , '20'),
+('7654'	,'MARTIN' ,'SALESMAN',	'1981-09-28',	'1250',	1400,'30'),
+('7499'	,'ALLEN',	 'SALESMAN','1981-02-20',	'1600',	300,'30');
+3.Ans:
+use test;
+select ename,sal from emp
+where sal >= 2500 and sal <= 5000;
+4.Ans:
+use test;
+select ename from emp order by ename desc;
+5.Ans:
+use test;
+select lower(ename) from emp;
+6.Ans:
+use test;
+select ename,length(ename) from emp;
+7.Ans:
+-- 7.Ans:
+
+use test;
+select deptno,ename from test.emp, test.dept
+inner join emp.deptno = dept.deptno
+where deptno = '10';
+Section II
+-- 1.Ans:
+create database plsql;
+use plsql;
+create table TEMPP(
+str1 varchar(20),
+str2 varchar(20),
+result varchar(20)
+);
+delimiter //
+Create procedure PROC1()
+begin
+declare str1 varchar(20) default 'DAC';
+declare str2 varchar(20) default 'CDAC';
+if (instr(str1,str2)>0 or instr(tr2,str1)>0) then
+insert into tempp values(str1,str2,'exists');
+else
+insert into tempp values(str1,str2,'not exists');
+end if;
+end; //
+delimiter ;
+call PROC1();
+select * from tempp;
